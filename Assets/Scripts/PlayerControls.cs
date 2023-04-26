@@ -16,16 +16,16 @@ public class PlayerControls : MonoBehaviour
 
     public float boundY = 2.25f;
 
-    private Rigidbody2D rb2d;
+    private Rigidbody rb;
 
     void Start()
     {
-        rb2d = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        var vel = rb2d.velocity;
+        var vel = rb.velocity;
         if (Input.GetKey(moveUp))
         {
             vel.y = speed;
@@ -38,7 +38,7 @@ public class PlayerControls : MonoBehaviour
         {
             vel.y = 0;
         }
-        rb2d.velocity = vel;
+        rb.velocity = vel;
 
         var pos = transform.position;
         if (pos.y > boundY)

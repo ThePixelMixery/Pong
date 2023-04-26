@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class BallScript : MonoBehaviour
 {
-    private Rigidbody2D rb2d;
+    private Rigidbody rb;
 
     void Start()
     {
-        rb2d = GetComponent<Rigidbody2D>();
-        Invoke("GoBall", 2);
+        rb = GetComponent<Rigidbody>();
+        Invoke("GoBall", 0);
     }
 
     void GoBall()
@@ -17,18 +17,18 @@ public class BallScript : MonoBehaviour
         float rand = Random.Range(0, 2);
         if (rand < 1)
         {
-            rb2d.AddForce(new Vector2(20, -15));
+            rb.AddForce(new Vector3(20, -15, 0));
         }
         else
         {
-            rb2d.AddForce(new Vector2(-20, -15));
+            rb.AddForce(new Vector3(-20, -15, 0));
         }
     }
 
     void ResetBall()
     {
-        rb2d.velocity = Vector2.zero;
-        transform.position = Vector2.zero;
+        rb.velocity = Vector3.zero;
+        transform.position = Vector3.zero;
     }
 
     void RestartGame()
@@ -37,16 +37,16 @@ public class BallScript : MonoBehaviour
         Invoke("GoBall", 1);
     }
 
-    void OnCollisionEnter2D(Collision2D coll)
+    void OnCollisionEnter3D(Collision coll)
     {
         if (coll.collider.CompareTag("Player"))
         {
-            Vector2 vel;
-            vel.x = rb2d.velocity.x;
+            Vector3 vel = rb.velocity;
+            vel.x = rb.velocity.x;
             vel.y =
-                (rb2d.velocity.y / 2) +
+                (rb.velocity.y / 2) +
                 (coll.collider.attachedRigidbody.velocity.y / 3);
-            rb2d.velocity = vel;
+            rb.velocity = vel;
         }
     }
 }
