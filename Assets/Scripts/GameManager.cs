@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public TextMeshProUGUI textPlayerScore;
-    public TextMeshProUGUI textAIScore;
+    public static TextMeshProUGUI textPlayerScore;
+
+    public static TextMeshProUGUI textAIScore;
 
     public static int playerScore;
+
     public static int AIScore;
 
     GameObject ball;
@@ -16,16 +18,23 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         ball = GameObject.FindGameObjectWithTag("Ball");
+        GameObject objPlayerScore = GameObject.Find("Text_PlayerScore");
+        textPlayerScore = objPlayerScore.GetComponent<TextMeshProUGUI>();
+        GameObject objAIScore = GameObject.Find("Text_AIScore");
+        textAIScore = objAIScore.GetComponent<TextMeshProUGUI>();
     }
 
-    public static void Score (string wallID) {
-    if (wallID == "GO_RightWall")
+    public static void Score(string wallID)
     {
-        playerScore++;
-    } else
-    {
-        AIScore++;
+        if (wallID == "GO_LeftWall")
+        {
+            playerScore++;
+            textPlayerScore.text = playerScore.ToString();
+        }
+        else
+        {
+            AIScore++;
+            textAIScore.text = AIScore.ToString();
+        }
     }
-}
-
 }

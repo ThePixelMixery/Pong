@@ -452,6 +452,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GO_LeftPaddle
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cd95ed9c3858160c0b215a6a07afc511, type: 3}
+      propertyPath: m_TagString
+      value: Paddle
+      objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: cd95ed9c3858160c0b215a6a07afc511, type: 3}
       propertyPath: m_Name
       value: Mesh_LeftPaddle
@@ -1010,6 +1014,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GO_RIghtPaddle
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cd95ed9c3858160c0b215a6a07afc511, type: 3}
+      propertyPath: m_TagString
+      value: Paddle
+      objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: cd95ed9c3858160c0b215a6a07afc511, type: 3}
       propertyPath: m_Name
       value: Mesh_RightPaddle
@@ -1161,7 +1169,7 @@ PrefabInstance:
       objectReference: {fileID: -2432090755550338912, guid: 1124504f5bd785de1b09e1517013a9cc, type: 3}
     - target: {fileID: 919132149155446097, guid: 1124504f5bd785de1b09e1517013a9cc, type: 3}
       propertyPath: m_Name
-      value: Ball
+      value: GO_Ball
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1124504f5bd785de1b09e1517013a9cc, type: 3}
       propertyPath: m_TagString

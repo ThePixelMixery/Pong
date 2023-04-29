@@ -39,7 +39,7 @@ public class BallScript : MonoBehaviour
 
     void OnCollisionEnter3D(Collision coll)
     {
-        if (coll.collider.CompareTag("Player"))
+        if (coll.collider.CompareTag("Paddle"))
         {
             Vector3 vel = rb.velocity;
             vel.x = rb.velocity.x;
