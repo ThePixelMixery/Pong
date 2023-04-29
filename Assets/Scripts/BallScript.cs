@@ -17,11 +17,11 @@ public class BallScript : MonoBehaviour
         float rand = Random.Range(0, 2);
         if (rand < 1)
         {
-            rb.AddForce(new Vector3(20, -15, 0));
+            rb.AddForce(new Vector3(30, Random.Range(-15, 15), 0));
         }
         else
         {
-            rb.AddForce(new Vector3(-20, -15, 0));
+            rb.AddForce(new Vector3(-30, Random.Range(-15, 15), 0));
         }
     }
 
@@ -37,16 +37,7 @@ public class BallScript : MonoBehaviour
         Invoke("GoBall", 1);
     }
 
-    void OnCollisionEnter3D(Collision coll)
+    void OnCollisionEnter(Collision coll)
     {
-        if (coll.collider.CompareTag("Paddle"))
-        {
-            Vector3 vel = rb.velocity;
-            vel.x = rb.velocity.x;
-            vel.y =
-                (rb.velocity.y / 2) +
-                (coll.collider.attachedRigidbody.velocity.y / 3);
-            rb.velocity = vel;
-        }
     }
 }

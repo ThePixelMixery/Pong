@@ -4,17 +4,7 @@ using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
 {
-    public KeyCode moveUp = KeyCode.UpArrow;
-
-    public KeyCode moveDown = KeyCode.DownArrow;
-
-    public KeyCode moveLeft = KeyCode.LeftArrow;
-
-    public KeyCode moveRight = KeyCode.RightArrow;
-
-    public float speed = 10.0f;
-
-    public float boundY = 2.25f;
+    public float moveSpeed = 0.0000001f;
 
     private Rigidbody rb;
 
@@ -25,30 +15,14 @@ public class PlayerControls : MonoBehaviour
 
     void Update()
     {
-        var vel = rb.velocity;
-        if (Input.GetKey(moveUp))
-        {
-            vel.y = speed;
-        }
-        else if (Input.GetKey(moveDown))
-        {
-            vel.y = -speed;
-        }
+        Vector3 position = transform.position;
+        float translation = Input.GetAxis("Vertical") * moveSpeed;
+        if (transform.position.y + translation < -2.3f)
+            position.y = -2.3f;
+        else if (transform.position.y + translation > 2.3f)
+            position.y = 2.3f;
         else
-        {
-            vel.y = 0;
-        }
-        rb.velocity = vel;
-
-        var pos = transform.position;
-        if (pos.y > boundY)
-        {
-            pos.y = boundY;
-        }
-        else if (pos.y < -boundY)
-        {
-            pos.y = -boundY;
-        }
-        transform.position = pos;
+            position.y += translation;
+        transform.position = position;
     }
 }
