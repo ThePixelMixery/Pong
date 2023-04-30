@@ -4,25 +4,20 @@ using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
 {
-    public float moveSpeed = 0.0000001f;
+    public float moveSpeed = 3f;
 
-    private Rigidbody rb;
-
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
+    private Vector3 Vec;
 
     void Update()
     {
-        Vector3 position = transform.position;
-        float translation = Input.GetAxis("Vertical") * moveSpeed;
-        if (transform.position.y + translation < -2.3f)
-            position.y = -2.3f;
-        else if (transform.position.y + translation > 2.3f)
-            position.y = 2.3f;
-        else
-            position.y += translation;
-        transform.position = position;
+        transform.position =
+            new Vector3(transform.position.x,
+                transform.position.y +
+                Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime,
+                transform.position.z);
+        if (transform.position.y < -2.3f)
+            transform.position = new Vector3(5.85f, -2.3f, 0);
+        else if (transform.position.y > 2.3f)
+            transform.position = new Vector3(5.85f, 2.3f, 0);
     }
 }

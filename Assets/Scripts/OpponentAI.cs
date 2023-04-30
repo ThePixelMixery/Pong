@@ -12,7 +12,7 @@ public class OpponentAI : MonoBehaviour
 
     private Rigidbody rb;
 
-    private float speed = 5.5f;
+    private float speed = 3f;
 
     void Start()
     {

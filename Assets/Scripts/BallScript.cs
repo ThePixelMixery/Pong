@@ -37,7 +37,11 @@ public class BallScript : MonoBehaviour
         Invoke("GoBall", 1);
     }
 
-    void OnCollisionEnter(Collision coll)
+    float hitFactor(Vector2 ballPos, Vector2 racketPos, float racketHeight)
     {
+     
+        return (ballPos.y - racketPos.y) / racketHeight;
     }
+
+
 }
