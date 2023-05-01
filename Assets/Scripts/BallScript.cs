@@ -6,23 +6,30 @@ public class BallScript : MonoBehaviour
 {
     private Rigidbody rb;
 
-    void Start()
+    private float speed = 10;
+
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        Invoke("GoBall", 0);
+
+        StartCoroutine(StartGame());
     }
 
-    void GoBall()
+    IEnumerator StartGame()
     {
+        yield return new WaitForSeconds(2);
         float rand = Random.Range(0, 2);
         if (rand < 1)
         {
-            rb.AddForce(new Vector3(30, Random.Range(-15, 15), 0));
+            Vector3 dir = new Vector3(1, Random.Range(-7, 7), 0).normalized;
+            rb.velocity = dir * speed;
         }
         else
         {
-            rb.AddForce(new Vector3(-30, Random.Range(-15, 15), 0));
+            Vector3 dir = new Vector3(-1, Random.Range(-7, 7), 0).normalized;
+            rb.velocity = dir * speed;
         }
+        yield return null;
     }
 
     void ResetBall()
@@ -34,14 +41,40 @@ public class BallScript : MonoBehaviour
     void RestartGame()
     {
         ResetBall();
-        Invoke("GoBall", 1);
+        StartCoroutine(StartGame());
     }
 
-    float hitFactor(Vector2 ballPos, Vector2 racketPos, float racketHeight)
+    float hitFactor(Vector3 ballPos, Vector3 racketPos, float racketHeight)
     {
-     
         return (ballPos.y - racketPos.y) / racketHeight;
     }
 
+    //fix me
+    void OnCollisionEnter(Collision coll)
+    {
+        if (coll.gameObject.name == "Mesh_LeftPaddle")
+        {
+            float y =
+                hitFactor(transform.position,
+                coll.transform.position,
+                coll.collider.bounds.size.y);
 
+            Vector3 dir = new Vector3(1, y, 0).normalized;
+
+            rb.velocity = dir * speed;
+        }
+
+        // Hit the right Racket?
+        if (coll.gameObject.name == "Mesh_RightPaddle")
+        {
+            float y =
+                hitFactor(transform.position,
+                coll.transform.position,
+                coll.collider.bounds.size.y);
+
+            Vector3 dir = new Vector3(-1, y, 0).normalized;
+
+            rb.velocity = dir * speed;
+        }
+    }
 }
