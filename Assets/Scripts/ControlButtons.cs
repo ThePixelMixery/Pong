@@ -8,7 +8,6 @@ public class ControlButtons : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene(0,LoadSceneMode.Single);
-        Debug.Log
     }
 
     public void PlayBase()

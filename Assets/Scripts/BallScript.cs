@@ -12,12 +12,11 @@ public class BallScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        StartCoroutine(StartGame());
+        Invoke("StartGame", 2.0f);
     }
 
-    IEnumerator StartGame()
+    void StartGame()
     {
-        yield return new WaitForSeconds(2);
         float rand = Random.Range(0, 2);
         if (rand < 1)
         {
@@ -29,7 +28,6 @@ public class BallScript : MonoBehaviour
             Vector3 dir = new Vector3(-1, Random.Range(-7, 7), 0).normalized;
             rb.velocity = dir * speed;
         }
-        yield return null;
     }
 
     void ResetBall()
@@ -41,7 +39,7 @@ public class BallScript : MonoBehaviour
     void RestartGame()
     {
         ResetBall();
-        StartCoroutine(StartGame());
+        Invoke("StartGame", 1.0f);
     }
 
     float hitFactor(Vector3 ballPos, Vector3 racketPos, float racketHeight)

@@ -16,8 +16,8 @@ public class PlayerControls : MonoBehaviour
                 Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime,
                 transform.position.z);
         if (transform.position.y < -2.3f)
-            transform.position = new Vector3(5.85f, -2.3f, 0);
+            transform.position = new Vector3(5.4f, -2.3f, 0);
         else if (transform.position.y > 2.3f)
-            transform.position = new Vector3(5.85f, 2.3f, 0);
+            transform.position = new Vector3(5.4f, 2.3f, 0);
     }
 }
