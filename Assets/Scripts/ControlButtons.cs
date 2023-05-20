@@ -7,12 +7,12 @@ public class ControlButtons : MonoBehaviour
 {
     public void MainMenu()
     {
-        SceneManager.LoadScene(0,LoadSceneMode.Single);
+        SceneManager.LoadScene(sceneBuildIndex:0,LoadSceneMode.Single);
     }
 
     public void PlayBase()
     {
-        SceneManager.LoadScene(1,LoadSceneMode.Single);
+        SceneManager.LoadScene(sceneBuildIndex:1,LoadSceneMode.Single);
     }
 
     public void Quit()

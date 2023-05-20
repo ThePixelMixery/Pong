@@ -13,11 +13,9 @@ public class GameManager : MonoBehaviour
 
     public static int AIScore;
 
-    GameObject ball;
 
     void Start()
     {
-        ball = GameObject.FindGameObjectWithTag("Ball");
         GameObject objPlayerScore = GameObject.Find("Text_PlayerScore");
         textPlayerScore = objPlayerScore.GetComponent<TextMeshProUGUI>();
         GameObject objAIScore = GameObject.Find("Text_AIScore");

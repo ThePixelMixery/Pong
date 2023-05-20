@@ -8,32 +8,36 @@ public class BallScript : MonoBehaviour
 
     private float speed = 10;
 
-    void Awake()
+    public bool started = false;
+
+    void Start()
     {
         rb = GetComponent<Rigidbody>();
-
-        Invoke("StartGame", 2.0f);
+        Invoke ("StartGame", 2.0f);
     }
 
     void StartGame()
     {
+        Vector3 dir;
+
         float rand = Random.Range(0, 2);
         if (rand < 1)
         {
-            Vector3 dir = new Vector3(1, Random.Range(-7, 7), 0).normalized;
-            rb.velocity = dir * speed;
+            dir = new Vector3(1, Random.Range(-7, 7), 0).normalized;
+            Debug.Log("Sent Right");
         }
         else
         {
-            Vector3 dir = new Vector3(-1, Random.Range(-7, 7), 0).normalized;
-            rb.velocity = dir * speed;
+            dir = new Vector3(-1, Random.Range(-7, 7), 0).normalized;
+            Debug.Log("Sent Left");
         }
+        rb.velocity = dir * speed;
     }
 
     void ResetBall()
     {
         rb.velocity = Vector3.zero;
-        transform.position = Vector3.zero;
+        transform.position = Vector3.zero;    
     }
 
     void RestartGame()

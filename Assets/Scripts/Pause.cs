@@ -16,13 +16,14 @@ public class Pause : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Escape))
         {
-            gameIsPaused = !gameIsPaused;
             PauseGame();
         }
     }
 
     public void PauseGame()
     {
+    gameIsPaused = !gameIsPaused;
+            
         if (gameIsPaused)
         {
             Time.timeScale = 0f;
