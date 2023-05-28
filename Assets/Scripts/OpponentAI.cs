@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OpponentAI : MonoBehaviour
 {
-    private GameObject ball;
+    public GameObject ball;
 
     private float ballY;
 
@@ -16,7 +16,6 @@ public class OpponentAI : MonoBehaviour
 
     void Start()
     {
-        ball = GameObject.FindGameObjectWithTag("Ball");
         rb = GetComponent<Rigidbody>();
     }
 

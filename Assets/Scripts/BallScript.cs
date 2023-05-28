@@ -8,10 +8,13 @@ public class BallScript : MonoBehaviour
 
     private float speed = 10;
 
-    public bool started = false;
+    private
 
     void Start()
     {
+        Debug.Log(gameObject);
+        GameObject opponent = GameObject.Find("Mesh_LeftPaddle");
+        opponent.GetComponent<OpponentAI>().ball=gameObject;
         rb = GetComponent<Rigidbody>();
         Invoke ("StartGame", 2.0f);
     }
@@ -34,16 +37,9 @@ public class BallScript : MonoBehaviour
         rb.velocity = dir * speed;
     }
 
-    void ResetBall()
+    void KillBall()
     {
-        rb.velocity = Vector3.zero;
-        transform.position = Vector3.zero;    
-    }
-
-    void RestartGame()
-    {
-        ResetBall();
-        Invoke("StartGame", 1.0f);
+        Destroy(gameObject);
     }
 
     float hitFactor(Vector3 ballPos, Vector3 racketPos, float racketHeight)

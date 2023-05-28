@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public static int playerScore;
 
     public static int AIScore;
+    public GameObject ball;
 
 
     void Start()
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
         textPlayerScore = objPlayerScore.GetComponent<TextMeshProUGUI>();
         GameObject objAIScore = GameObject.Find("Text_AIScore");
         textAIScore = objAIScore.GetComponent<TextMeshProUGUI>();
+        Instantiate(ball);
     }
 
     public static void Score(string wallID)
