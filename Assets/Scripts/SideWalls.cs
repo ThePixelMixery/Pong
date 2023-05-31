@@ -12,9 +12,17 @@ public class SideWalls : MonoBehaviour {
         {
             string wallName = transform.name;
             ScoreKeeper.Score(wallName);
-            ballPos Vector3 = new Vector3(hitInfo.transform.pos);
+            Vector3 ballPos= new Vector3();
+            ballPos = hitInfo.transform.position;
             hitInfo.gameObject.SendMessage("KillBall", 0, SendMessageOptions.RequireReceiver);
-            Instantiate(particles, (0,0,0), (0f,-90.0f,0f,1.0f));
+            if (wallName == "GO_RightWall"){
+                Instantiate(particles, ballPos, Quaternion.Euler(0,0,0));
+            }            
+            else
+            {
+                Instantiate(particles, ballPos, Quaternion.Euler(0,0,0));
+                
+            }
             Instantiate(ball);
         }
     }
