@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class BallScript : MonoBehaviour
 {
+    
     private Rigidbody rb;
 
     private float speed = 10;
 
-    private
+    public GameObject particles;
 
     void Start()
     {
-        Debug.Log(gameObject);
+        particles = GameObject.Find("ParticleHandler");
+        Debug.Log(particles);
         GameObject opponent = GameObject.Find("Mesh_LeftPaddle");
         opponent.GetComponent<OpponentAI>().ball=gameObject;
         rb = GetComponent<Rigidbody>();
@@ -74,5 +76,12 @@ public class BallScript : MonoBehaviour
 
             rb.velocity = dir * speed;
         }
+        
+        if (coll.gameObject.name == "GO_RightWall")
+        {
+        }
+
+        if (coll.gameObject.name == "GO_LeftWall")
+        {}
     }
 }

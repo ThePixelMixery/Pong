@@ -6,18 +6,14 @@ public class OpponentAI : MonoBehaviour
 {
     public GameObject ball;
 
+    public AudioSource bounce;
+
     private float ballY;
 
     private float currentY;
 
-    private Rigidbody rb;
-
     private float speed = 2f;
 
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
 
     void Update()
     {
