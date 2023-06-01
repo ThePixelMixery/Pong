@@ -6,8 +6,6 @@ public class PlayerControls : MonoBehaviour
 {
     public float moveSpeed = 2f;
 
-    private Vector3 Vec;
-
     void Update()
     {
         transform.position =

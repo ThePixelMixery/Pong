@@ -16,12 +16,11 @@ public class SideWalls : MonoBehaviour {
             ballPos = hitInfo.transform.position;
             hitInfo.gameObject.SendMessage("KillBall", 0, SendMessageOptions.RequireReceiver);
             if (wallName == "GO_RightWall"){
-                Instantiate(particles, ballPos, Quaternion.Euler(0,0,0));
+                Instantiate(particles, ballPos, Quaternion.Euler(0,-90,0));
             }            
             else
             {
-                Instantiate(particles, ballPos, Quaternion.Euler(0,0,0));
-                
+                Instantiate(particles, ballPos, Quaternion.Euler(-180,-90,0));
             }
             Instantiate(ball);
         }

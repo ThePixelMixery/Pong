@@ -13,8 +13,6 @@ public class BallScript : MonoBehaviour
 
     void Start()
     {
-        particles = GameObject.Find("ParticleHandler");
-        Debug.Log(particles);
         GameObject opponent = GameObject.Find("Mesh_LeftPaddle");
         opponent.GetComponent<OpponentAI>().ball=gameObject;
         rb = GetComponent<Rigidbody>();
@@ -29,12 +27,10 @@ public class BallScript : MonoBehaviour
         if (rand < 1)
         {
             dir = new Vector3(1, Random.Range(-7, 7), 0).normalized;
-            Debug.Log("Sent Right");
         }
         else
         {
             dir = new Vector3(-1, Random.Range(-7, 7), 0).normalized;
-            Debug.Log("Sent Left");
         }
         rb.velocity = dir * speed;
     }
@@ -76,12 +72,5 @@ public class BallScript : MonoBehaviour
 
             rb.velocity = dir * speed;
         }
-        
-        if (coll.gameObject.name == "GO_RightWall")
-        {
-        }
-
-        if (coll.gameObject.name == "GO_LeftWall")
-        {}
     }
 }
