@@ -6,6 +6,11 @@ public class PlayerControls : MonoBehaviour
 {
     public float moveSpeed = 2f;
 
+    void OnCollisionEnter()
+    {
+        GetComponent<AudioSource>().Play();
+    }
+
     void Update()
     {
         transform.position =

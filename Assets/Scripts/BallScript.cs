@@ -48,6 +48,7 @@ public class BallScript : MonoBehaviour
     //fix me
     void OnCollisionEnter(Collision coll)
     {
+
         if (coll.gameObject.name == "Mesh_LeftPaddle")
         {
             float y =

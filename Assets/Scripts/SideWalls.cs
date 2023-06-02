@@ -6,10 +6,10 @@ public class SideWalls : MonoBehaviour {
     public GameObject ball;
     public GameObject particles;
     
-
     void OnTriggerEnter (Collider hitInfo) {
         if (hitInfo.name == "Mesh_Ball(Clone)")
         {
+            GetComponent<AudioSource>().Play();
             string wallName = transform.name;
             ScoreKeeper.Score(wallName);
             Vector3 ballPos= new Vector3();

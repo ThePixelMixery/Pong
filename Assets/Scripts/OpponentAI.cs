@@ -6,14 +6,16 @@ public class OpponentAI : MonoBehaviour
 {
     public GameObject ball;
 
-    public AudioSource bounce;
-
     private float ballY;
 
     private float currentY;
 
     private float speed = 2f;
 
+    void OnCollisionEnter()
+    {
+        GetComponent<AudioSource>().Play();
+    }
 
     void Update()
     {
