@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingsApply : MonoBehaviour
+public class SettingsEditor : MonoBehaviour
 {
     public GameObject gameManager;
     public GameObject ball;
-    public Toggle toggleTrail;
+    public GameObject toggleTrail;
     public Toggle toggleLight;
     public Toggle toggleUI;
 
@@ -15,4 +15,7 @@ public class SettingsApply : MonoBehaviour
     public Slider sliderMusic;
     public Slider sliderFX;
     
+    public void TogTrail(bool tog){
+
+    }
 }

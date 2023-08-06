@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class BallScript : MonoBehaviour
 {
-    
     private Rigidbody rb;
 
     private float speed = 10;
 
-    public GameObject particles;
-
     void Start()
     {
         GameObject opponent = GameObject.Find("Mesh_LeftPaddle");
-        opponent.GetComponent<OpponentAI>().ball=gameObject;
+        opponent.GetComponent<OpponentAI>().ball = gameObject;
         rb = GetComponent<Rigidbody>();
-        Invoke ("StartGame", 2.0f);
+        Invoke("StartGame", 2.0f);
     }
 
     void StartGame()
@@ -48,13 +45,13 @@ public class BallScript : MonoBehaviour
     //fix me
     void OnCollisionEnter(Collision coll)
     {
-
         if (coll.gameObject.name == "Mesh_LeftPaddle")
         {
-            float y =
-                hitFactor(transform.position,
+            float y = hitFactor(
+                transform.position,
                 coll.transform.position,
-                coll.collider.bounds.size.y);
+                coll.collider.bounds.size.y
+            );
 
             Vector3 dir = new Vector3(1, y, 0).normalized;
 
@@ -64,10 +61,11 @@ public class BallScript : MonoBehaviour
         // Hit the right Racket?
         if (coll.gameObject.name == "Mesh_RightPaddle")
         {
-            float y =
-                hitFactor(transform.position,
+            float y = hitFactor(
+                transform.position,
                 coll.transform.position,
-                coll.collider.bounds.size.y);
+                coll.collider.bounds.size.y
+            );
 
             Vector3 dir = new Vector3(-1, y, 0).normalized;
 
